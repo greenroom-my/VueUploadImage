@@ -4,7 +4,7 @@
        @mouseleave="removeWrapper(this)">
 
     <div class="wrapper" :class="wrapper">
-      <p class="cancel-btn text-right" @click="$emit('remove')">x</p>
+      <p class="cancel-btn text-right" @click="removePreview(index)">x</p>
       <p class="text-center img-title">
         {{image.name}}
       </p>
@@ -16,17 +16,17 @@
 <script>
   export default {
     name: 'image-thumbnail',
-    props: [ 'image' ],
+    props: [ 'image', 'removePreview', 'index' ],
     data(){
       return {
         wrapper: 'hidden'
       }
     },
     methods: {
-      showWrapper: function ( e ) {
+      showWrapper: function (e) {
         this.wrapper = '';
       },
-      removeWrapper: function ( e ) {
+      removeWrapper: function (e) {
         this.wrapper = 'hidden';
       }
     }
@@ -64,7 +64,6 @@
         width:100%;
         word-break: break-all;
         word-wrap: break-word;
-
       }
 
       &.img-size{
